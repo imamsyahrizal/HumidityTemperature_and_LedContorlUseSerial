@@ -1,0 +1,351 @@
+[
+    {
+        "id": "bfdddac6.a822d8",
+        "type": "tab",
+        "label": "Tugas SBM 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9ace12ed.788cd",
+        "type": "serial in",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "serial": "d5a519a2.94a918",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "a6b8d91a.23b408",
+                "f7cccc44.4b8ec",
+                "f497ba2.0ac5548",
+                "1e41868.f83fb7a"
+            ]
+        ]
+    },
+    {
+        "id": "a6b8d91a.23b408",
+        "type": "function",
+        "z": "bfdddac6.a822d8",
+        "name": "Temp",
+        "func": "var temp1= msg.payload[6];\nvar temp2= msg.payload[7];\nvar temp3= msg.payload[9];\nvar temp4= msg.payload[10];\nvar result = (temp1*1000)+ (temp2*100) + (temp3*10) + temp4; \nresult = result/1000;\nvar result1 = {payload:result};\nreturn[result1];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "ab1f8108.dc0c5",
+                "b28f0ac6.f58038"
+            ]
+        ]
+    },
+    {
+        "id": "f7cccc44.4b8ec",
+        "type": "function",
+        "z": "bfdddac6.a822d8",
+        "name": "Humidity",
+        "func": "var hum1= msg.payload[0];\nvar hum2= msg.payload[1];\nvar hum3= msg.payload[3];\nvar hum4= msg.payload[4];\nvar result = (hum1*1000)+ (hum2*100) + (hum3*10) + hum4;\nresult = result/1000;\nvar result1 = {payload:result};\nreturn[result1];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "bc0b1b9.2713fe8",
+                "30f0f95a.31c026"
+            ]
+        ]
+    },
+    {
+        "id": "ab1f8108.dc0c5",
+        "type": "ui_chart",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "group": "c4512c9a.bfbe3",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 550,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc0b1b9.2713fe8",
+        "type": "ui_chart",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "group": "dd227295.4e68b",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f497ba2.0ac5548",
+        "type": "debug",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b28f0ac6.f58038",
+        "type": "ui_gauge",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "group": "c4512c9a.bfbe3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Temperature",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 550,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "30f0f95a.31c026",
+        "type": "ui_gauge",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "group": "dd227295.4e68b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7c07cee1.716fd",
+        "type": "ui_button",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "group": "cd14b720.a2e208",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "39ef3e75.154ae2"
+            ]
+        ]
+    },
+    {
+        "id": "39ef3e75.154ae2",
+        "type": "serial out",
+        "z": "bfdddac6.a822d8",
+        "name": "",
+        "serial": "d5a519a2.94a918",
+        "x": 450,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1e41868.f83fb7a",
+        "type": "function",
+        "z": "bfdddac6.a822d8",
+        "name": "Led Status",
+        "func": "var temp1= msg.payload[12];\nvar result = temp1\nvar status\nif(temp1==0){\n    status = \"OFF\"\n}else{\n    status = \"ON\"\n}\nresult = status\nvar result1 = {payload:result};\nreturn[result1];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "81b6d257.39772"
+            ]
+        ]
+    },
+    {
+        "id": "81b6d257.39772",
+        "type": "ui_text",
+        "z": "bfdddac6.a822d8",
+        "group": "cd14b720.a2e208",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d5a519a2.94a918",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "c4512c9a.bfbe3",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "a1cc0635.0cabb8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dd227295.4e68b",
+        "type": "ui_group",
+        "name": "Humidity",
+        "tab": "a1cc0635.0cabb8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "cd14b720.a2e208",
+        "type": "ui_group",
+        "name": "LED",
+        "tab": "a1cc0635.0cabb8",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a1cc0635.0cabb8",
+        "type": "ui_tab",
+        "name": "[424967] Imam_Tugas1",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
